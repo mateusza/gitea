@@ -2120,6 +2120,16 @@ $(document).ready(function () {
         }
     }
 
+    if ( $('#ssh-key-content').length > 0 ){
+        var $sshKeyContent = $('#ssh-key-content');
+        $sshKeyContent.change(function() {
+	        var $sshKeyTitle = $('#ssh-key-title');
+	        if ( $sshKeyContent.val().length > 0 && $sshKeyTitle.val() === "" ){
+		        $sshKeyTitle.val( $sshKeyContent.val().trimRight().split(" ").splice(2).join(" ") );
+	        }
+        } );
+    }
+
     var routes = {
         'div.user.settings': initUserSettings,
         'div.repository.settings.collaboration': initRepositoryCollaboration
